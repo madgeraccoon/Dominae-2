@@ -1,4 +1,8 @@
-# Dominae 2
+hey! it actually worked!
+# Centipeetle
+Centipeetle is a discord.py bot heavily based on https://github.com/Evshaddock/Dominae-2 with several additions of varying magnitude, such as a command that rolls a d420, or a complete reorganization of 90% of the code. This is my first real project and I like to think I've learned a lot from it. The prerequisites are the same as the prerequisites for Dominae. Anyways, enjoy!
+
+# Dominae
 
 A BASH and Discord.py Rewrite based Discord bot (Linux only!)
 Main use is for taking pictures through the webcam of the system running the bot, along with other fun bits and bobs
