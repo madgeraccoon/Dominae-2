@@ -31,6 +31,8 @@ Centipeetle is a discord.py bot forked from and heavily based on https://github.
 
 `chaps` in message: Novelty; causes a Centipeetle response
 
+`...` Other novelty commands may appear in the bot's config from time to time, as the bot is largely an experimental project.
+
 ## Disabled commands
 Some commands from Dominae were disabled due to being Dominae-specific remote commands. These commands have no manuals or documentations, so enable and configure them at your own risk! To enable a disabled command, remove it from the triple apostrophe and remove its entry from the list of disabled commands (line ~196 at last revision).
 
