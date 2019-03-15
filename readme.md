@@ -4,6 +4,7 @@ Centipeetle is a discord.py bot forked from and heavily based on https://github.
 
 ## Centipeetle exclusives
 (assumed prefix of 'c')
+
 `cfetch`: Grab a simplistic text screenfetch from the host device detailing system information
 
 `cremfetch`: Grab a simplistic text screenfetch from a remote device (needs additional setup in the crem.sh and cremfetch.sh files!!)
