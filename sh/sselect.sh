@@ -1,2 +1,2 @@
 #!/bin/bash
-scrot -s $HOME/.dominae/img/sselect.png
+scrot -s $HOME/.dominae/out/sselect.png

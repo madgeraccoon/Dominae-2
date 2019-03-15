@@ -1,2 +1,2 @@
 #!/bin/bash
-scrot ~/.dominae/img/sfull.png
+scrot ~/.dominae/out/sfull.png
