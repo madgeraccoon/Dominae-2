@@ -1,6 +1,28 @@
 hey! it actually worked!
 # Centipeetle
-Centipeetle is a discord.py bot heavily based on https://github.com/Evshaddock/Dominae-2 with several additions of varying magnitude, such as a command that rolls a d420, or a complete reorganization of 90% of the code. This is my first real project and I like to think I've learned a lot from it. The prerequisites are the same as the prerequisites for Dominae, with the addition of `fswebcam` in order for `sweb` to work. Anyways, enjoy!
+Centipeetle is a discord.py bot forked from and heavily based on https://github.com/Evshaddock/Dominae-2 with several additions of varying magnitude, such as a command that rolls a d420, or a complete reorganization of 90% of the code. This is my first real project and I like to think I've learned a lot from it. The prerequisites are the same as the prerequisites for Dominae, with the addition of `fswebcam` in order for `sweb` to work. Anyways, enjoy!
+
+## Centipeetle exclusives
+(assumed prefix of 'c')
+`cfetch`: Grab a simplistic text screenfetch from the host device detailing system information
+`cremfetch`: Grab a simplistic text screenfetch from a remote device (needs additional setup in the crem.sh and cremfetch.sh files!!)
+`cpacreb`: With sudo passwording disabled, runs `sudo pacman -Syu` to fully update your system followed by a reboot, provided you have a role named 'centipeetle wrangler'
+`cpacman`: With sudo passwording disabled, runs `sudo pacman -Syu` to fully update your system, provided you have a role named 'centipeetle wrangler'
+`creboot`: With sudo passwording disabled, reboots your system, provided you have a role named 'centipeetle wrangler'
+`ccbook`: Personal command; uploads an image placed as ~/Documents/cbook.png to the channel activated from
+`cd420`: Novelty; rolls the D420
+`ccredits`: Displays credits for the bot
+`{MESSAGE} csimon {MESSAGE}`: Has the bot repeat the containing message with `csimon` removed, as a simon says-esque command
+`i love you centipeetle`: Novelty; show affection
+`centipeetle, how was your day` or any variation containing "centipeetle", "how" and "day": Novelty; has the bot read a random line from `txt/responses.txt` and print it to chat
+`caddresp {RESPONSE}`: Novelty; add a response to the previous command's response pool.
+`chaps` in message: Novelty; causes a Centipeetle response
+
+## Disabled commands
+Some commands from Dominae were disabled due to being Dominae-specific remote commands. These commands have no manuals or documentations, so enable and configure them at your own risk! To enable a disabled command, remove it from the triple apostrophe and remove its entry from the list of disabled commands (line ~196 at last revision).
+
+## Issues and suggestions
+If you stumble upon this bot and find an issue, feel free to report it to me and I'll try my best to fix or improve the bot!
 
 # Dominae
 
