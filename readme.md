@@ -5,17 +5,29 @@ Centipeetle is a discord.py bot forked from and heavily based on https://github.
 ## Centipeetle exclusives
 (assumed prefix of 'c')
 `cfetch`: Grab a simplistic text screenfetch from the host device detailing system information
+
 `cremfetch`: Grab a simplistic text screenfetch from a remote device (needs additional setup in the crem.sh and cremfetch.sh files!!)
+
 `cpacreb`: With sudo passwording disabled, runs `sudo pacman -Syu` to fully update your system followed by a reboot, provided you have a role named 'centipeetle wrangler'
+
 `cpacman`: With sudo passwording disabled, runs `sudo pacman -Syu` to fully update your system, provided you have a role named 'centipeetle wrangler'
+
 `creboot`: With sudo passwording disabled, reboots your system, provided you have a role named 'centipeetle wrangler'
+
 `ccbook`: Personal command; uploads an image placed as ~/Documents/cbook.png to the channel activated from
+
 `cd420`: Novelty; rolls the D420
+
 `ccredits`: Displays credits for the bot
+
 `{MESSAGE} csimon {MESSAGE}`: Has the bot repeat the containing message with `csimon` removed, as a simon says-esque command
-`i love you centipeetle`: Novelty; show affection
+
+`i love you centipeetle`: Novelty; shw affection
+
 `centipeetle, how was your day` or any variation containing "centipeetle", "how" and "day": Novelty; has the bot read a random line from `txt/responses.txt` and print it to chat
+
 `caddresp {RESPONSE}`: Novelty; add a response to the previous command's response pool.
+
 `chaps` in message: Novelty; causes a Centipeetle response
 
 ## Disabled commands
