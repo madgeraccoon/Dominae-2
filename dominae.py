@@ -6,6 +6,7 @@ from datetime import datetime
 from random import randint
 from pathlib import Path
 from os import path
+import random
 import subprocess
 import discord
 import asyncio
@@ -21,17 +22,14 @@ tokenfile = open(txt + '/token.txt','r')
 token = tokenfile.read()
 tokenfile.close()
 
-now = datetime.now()
-justtimey = 'at {} \n'.format(now.strftime("%I:%M%p on %A, %B %d, %Y"))
-embedtimey = '{}'.format(now.strftime("%a at %I:%M%p"))
-
 embedicon = 'https://cdn.discordapp.com/attachments/437821201461805066/552014178521710612/Centepeetle_GemPNG.webp'
 embedcolor = 0x7900CE
 
 @client.event
 async def on_ready():
+    now = datetime.now()
     print ("Squaw! (Bot Core Ready)")
-    print (justtimey)
+    print ('at {} \n'.format(now.strftime("%I:%M%p on %A, %B %d, %Y")))
     activity = discord.Game(name="with Steven")
     await client.change_presence(status=discord.Status.online, activity=activity)
     
@@ -44,15 +42,20 @@ async def on_message(message):
     channel = message.channel
     author  = message.author
 
+    now = datetime.now()
+    justtimey = 'at {} \n'.format(now.strftime("%I:%M%p on %A, %B %d, %Y"))
+    embedtimey = '{}'.format(now.strftime("%a at %I:%M%p"))
+    timeydate = 'by {} at {} \n'.format(author, now.strftime("%I:%M:%S%p on %A, %B %d, %Y"))
+
     prefile = open(txt + '/pre.txt','r')
     pre = prefile.read().strip()
 
     tfile = open(txt + '/toggle.txt','r')
     toggle = tfile.read()
 
-    timeydate = 'by {} at {} \n'.format(author, now.strftime("%I:%M%p on %A, %B %d, %Y"))
-
     if message.content.startswith(pre + "say"):
+        pass
+    elif message.content.startswith(pre + "addresp"):
         pass
     elif message.content.startswith(pre):
         message.content = message.content.lower()
@@ -168,6 +171,18 @@ async def on_message(message):
             print ("Squaw! (chaps detected)")
             print (timeydate)
             
+        if ['centipeetle', 'how', 'day'] in message.content:
+            with open(txt + "/responses.txt", 'r') as resps:
+                response = resps.readlines()
+                await channel.send(random.choice(response))
+                print ("How was my day?")
+                print (timeydate)
+
+        if message.content.startswith(pre + 'addresp'):
+            with open(txt + "/responses.txt", 'a') as resps:
+                resps.write(message.content.replace(pre + 'addresp ','') + "\n")
+                await channel.send("Response added: `" + message.content + "`")
+
         if message.content.startswith(pre + 'cbook'):
             await channel.send(file=discord.File(str(Path.home()) + "/Documents/cbook.png"))
             print ("Chromebook screenshot uploaded!")
