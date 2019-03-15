@@ -37,7 +37,7 @@ Some commands from Dominae were disabled due to being Dominae-specific remote co
 ## Issues and suggestions
 If you stumble upon this bot and find an issue, feel free to report it to me and I'll try my best to fix or improve the bot!
 
-# Dominae
+# Dominae Readme
 
 A BASH and Discord.py Rewrite based Discord bot (Linux only!)
 Main use is for taking pictures through the webcam of the system running the bot, along with other fun bits and bobs
