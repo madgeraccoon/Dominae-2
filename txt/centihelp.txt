@@ -1,0 +1,22 @@
+**Centipeetle** — a fork of Dominae by madgeraccoon 
+`Centi Commands`
+**PREFIXfetch**: Grab a simplistic text screenfetch from the host device
+**PREFIXremfetch**: Grab a simplistic text screenfetch from a remote device
+**PREFIXpacreb**: Runs `sudo pacman -Syu` to fully update your system and reboot
+**PREFIXpacman**: Runs `sudo pacman -Syu` to fully update your system
+**PREFIXreboot**: Reboots your system
+**PREFIXcbook**: Personal command; uploads ~/Documents/cbook.png to the channel
+**PREFIXd {NUMBER}**: Rolls dice
+**PREFIXcredits**: Displays credits for the bot
+**PREFIXsimon**: Has the bot repeat the containing message with `csimon` removed
+**PREFIXaddresp {RESPONSE}**: Add a response to the response pool
+**PREFIXyt {QUERY}**: Searches for a YouTube video and posts the URL
+**PREFIXdlyt {QUERY}**: Searches for a video, downloads it and posts the file
+**PREFIXreaminder {REMINDER}**: Adds a reminder to your reminders
+**PREFIXremindclear**: Removes your reminders
+**centi reminders**: List your reminders with their timestamps in a neat embed
+**centi reminders plaintext**: List your reminders without a neat embed
+**i love you centipeetle**: Show affection
+**centipeetle, how was your day** or similar: Has the bot print a random response
+**chaps** in message: Causes a Centipeetle response
+View specifics and more at https://github.com/madgeraccoon/Centipeetle

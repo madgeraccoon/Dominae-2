@@ -11,6 +11,7 @@ import subprocess
 import discord
 import asyncio
 import random
+import os
 
 client = commands.Bot(command_prefix='>')
 
@@ -19,6 +20,7 @@ img = cwd + "/img"
 sh = cwd + "/sh"
 txt = cwd + "/txt"
 out = cwd + "/out"
+rems = cwd + "/rems"
 
 tokenfile = open(txt + '/token.txt','r')
 token = tokenfile.read()
@@ -59,8 +61,8 @@ async def on_message(message):
         pass
     elif message.content.startswith(pre + "addresp"):
         pass
-    elif message.content.startswith(pre):
-        message.content = message.content.lower()
+    elif message.content.startswith(pre + "reaminder"):
+        pass
     else:
         message.content = message.content.lower()
     
@@ -103,8 +105,7 @@ async def on_message(message):
             embed.set_author(name="Screenfetch", icon_url=embedicon)
             embed.set_footer(text=embedtimey)
             await channel.send(embed=embed)
-            print ("Screenfetch posted! ")
-            print (timeydate)
+            print ("Screenfetch posted! \n{}".format(timeydate))
 
         if message.content.startswith(pre + 'remfetch'): #cremfetch
 
@@ -118,10 +119,34 @@ async def on_message(message):
             print ("Remote Screenfetch posted! ")
             print (timeydate)
 
-        if 'i love you centi' in message.content:
+        if 'i love you centi' in message.content: #love
 
-            await channel.send(file=discord.File(img + '/lovepeetle.gif'))
-            print ("Love given!")
+            if "dummy" in message.content:
+                await channel.send(file=discord.File(img + '/angry.gif'))
+            else:
+                await channel.send(file=discord.File(img + '/lovepeetle.gif'))
+                print ("Love given!")
+                print (timeydate)
+
+        if message.content.startswith(pre + "yt"): #cyt
+            
+            preq = message.content.replace(pre + "yt ","")
+            target = preq.replace(preq, "'" + preq + "'")
+            subprocess.call(sh + '/cytsearch.sh ' + target, shell=True)
+            with open (txt + '/ytout.txt', 'r') as ytfile:
+                ytout = ytfile.read()
+            await channel.send("Your URL for `" + preq + "` is here!: https://youtu.be/" + ytout.replace("\n",""))
+            print ("Youtube URL posted!")
+            print (timeydate)
+
+        if message.content.startswith(pre + "dlyt"): #cdlyt
+            
+            preq = message.content.replace(pre + "dlyt ","")
+            target = preq.replace(preq, "'" + preq + "'")
+            subprocess.call(sh + '/cdlyt.sh ' + target, shell=True)
+            await channel.send("Your download for `" + preq + "` is below! (unless the file's too big...)")
+            await channel.send(file=discord.File(out + '/ytgrab.mp3'))
+            print ("Youtube mp3 posted!")
             print (timeydate)
 
         if 'hungry bandit' and "your food's ours now" and "your food's" in message.content:
@@ -130,7 +155,7 @@ async def on_message(message):
             print ("Hungry bandit.")
             print (timeydate)
 
-        if 'csimon' in message.content:
+        if 'csimon' in message.content: #csimon
             
             sez = message.content.replace("csimon","")
             await channel.send(sez)
@@ -178,7 +203,7 @@ async def on_message(message):
             await channel.send(file=discord.File(img + "/cchaps.gif"))
             print ("Squaw! (chaps detected)")
             print (timeydate)
-            
+ 
         if 'centipeetle' in message.content and 'how' in message.content and 'day' in message.content: #Centipeetle, how was your day?
             with open(txt + "/responses.txt", 'r') as resps:
                 response = resps.readlines()
@@ -189,20 +214,65 @@ async def on_message(message):
         if message.content.startswith(pre + 'addresp'): #caddresp
             with open(txt + "/responses.txt", 'a') as resps:
                 resps.write(message.content.replace(pre + 'addresp ','') + "\n")
-                await channel.send("Response added: `" + message.content + "`")
+                await channel.send("Response added: `" + message.content.replace(pre + 'addresp ','') + "`")
 
         if message.content.startswith(pre + 'cbook'): #ccbook
             await channel.send(file=discord.File(img + "cbook.png"))
             print ("Special image uploaded!")
             print (timeydate)
 
-        if message.content.startswith(pre + 'd420'): #cd420
-            await channel.send("Rolling the **D420**, your number is **" + str(randint(1, 420)) + "**!")
-            print ("The D420 has been cast!")
-            print (timeydate)
+###REMINDER SUITE
+
+        if message.content.startswith(pre + 'reaminder'): #creaminder
+            with open(rems + "/" + str(message.author.id) + ".txt", 'a+') as reminds:
+                reminds.write("**" + embedtimey + "**" + " - " + message.content.replace(pre + 'reaminder ','') + "\n")
+                await channel.send("Reminder added: `" + message.content.replace(pre + 'reaminder ','') + "`")
+                print ("Reminder added!")
+                print (timeydate)
+
+        if 'centi' in message.content and 'reminders' in message.content: #reminders
+            if 'plaintext' in message.content:
+                with open(rems + "/" + str(message.author.id) + ".txt", 'r') as reminds:
+                    remlist = reminds.read()
+                await channel.send("Reminders:\n" + remlist)
+                print ("Plaintext reminders listed!")
+                print (timeydate)
+            else:
+                with open(rems + "/" + str(message.author.id) + ".txt", 'r') as reminds:
+                    remlist = reminds.read()
+                embed = discord.Embed(description=remlist, color=embedcolor)
+                embed.set_author(name="Reminders", icon_url=embedicon)
+                embed.set_footer(text=embedtimey)
+                await channel.send(embed=embed)
+                print ("Reminders listed!")
+                print (timeydate)
+
+        if message.content.startswith('cleareminder'): #clear reminders
+            try:
+                usrid = str(message.author.id)
+                os.remove(rems + "/" + str(message.author.id) + ".txt")
+                await channel.send("Reminders cleared for user `" + message.author.name + "` (ID: `" + usrid + "`)!")
+                print ("Reminders cleared for user `" + message.author.name + "` (ID: `" + usrid + "`)!")
+                print (timeydate)
+            except FileNotFoundError:
+                await channel.send("You have no reminders to clear! (File for user `" + message.author.name + "` does not exist)")
+                print ("Reminders NOT cleared for user `" + message.author.name + "`! (File for user `" + message.author.name + "` does not exist)")
+                print (timeydate)
+
+
+###END OF REMINDER SUITE
+
+        if message.content.startswith(pre + 'd'): #dice
+            try:
+                dicey = int(message.content.replace(pre + "d",""))
+                await channel.send("Rolling the **D" + str(dicey) + "**, your number is **" + str(randint(1, int(dicey))) + "**!")
+                print ("The Dicepeetle has been cast!")
+                print (timeydate)
+            except:
+                await channel.send("please for the love of christ use a natural number")
 
         if any([keyword in message.content for keyword in (pre + 'pi', pre + 'server', pre + 'servecam', pre + 'pibm', pre + 'remote', pre + 'remotecam', pre + 'combo', pre + 'select')]):
-            await channel.send("Squaw! (This command is disabled!)") #Disabled command list
+            await channel.send("Squaw! (This command is disabled!)") #Disabled command list ^
             print ("Disabled command attempted!")
             print (timeydate)
             
@@ -214,54 +284,36 @@ async def on_message(message):
             print ("Credits displayed!")
             print (timeydate)
 
-        if message.content.startswith(pre + 'help'):
-            helpbed = discord.Embed(description="**Dominae Commands** — `" + pre + "domhelp`\n\n**Centipeetle Commands** — `" + pre + "centihelp`")
-            helpbed.set_author(name="Help Disambiguation", icon_url=embedicon)
-            helpbed.set_footer(text=embedtimey)
-            await channel.send(embed=helpbed)
-            print ("Help disambiguation shown!")
-            print (timeydate)
+        if message.content.startswith(pre + 'help'): #chelp
+            if message.content.startswith(pre + 'help ' + pre + 'vox'):
+                await channel.send("Here are the current VOX keywords.")
+                await channel.send(file=discord.File(img + "/svox.png"))
+                print ("Black Mesa Tech Support notified! (help svox)")
+                print (timeydate)
+            else:
+                helpbed = discord.Embed(description="**Dominae Commands** — `" + pre + "domhelp`\n\n**Centipeetle Commands** — `" + "centihelp`")
+                helpbed.set_author(name="Help Disambiguation", icon_url=embedicon)
+                helpbed.set_footer(text=embedtimey)
+                await channel.send(embed=helpbed)
+                print ("Help disambiguation shown!")
+                print (timeydate)
 
-        if message.content.startswith(pre + 'domhelp'):
+        if message.content.startswith(pre + 'domhelp'): #cdomhelp
 
-            embed = discord.Embed(description="**Dominae** — a Discord screengrab bot by Elisha Shaddock \n" + 
-                                                     "`Dominae Commands` \n \n" +
-                                                     "`" + pre + "help` shows this message. Who'd have thought? \n" + 
-                                                     "`" + pre + "web` Takes a picture through my webcam \n" + 
-                                                     "`" + pre + "mov` Takes a short clip through my webcam \n" + 
-                                                     "`" + pre + "full` Takes a full screenshot of my monitors \n" + 
-                                                     "`" + pre + "window` Takes a screenshot of the current window I'm using \n" + 
-                                                     "`" + pre + "select` Forces me to select an area to screenshot \n" + 
-                                                     "`" + pre + "server` Legacy command from Dominae; disabled \n" + 
-                                                     "`" + pre + "servecam` Legacy command from Dominae; disabled \n" + 
-                                                     "`" + pre + "say` Generates a text image out of some text \n" + 
-                                                     "`" + pre + "vox` Generates an audio VOX sound. Use `" + pre + "vox help` for more info  \n" + 
-                                                     "`$prefix` Sets the bot prefix. Default is s \n" + 
-                                                     "`$on / $off` Enables or Disables all bot functions \n", color=embedcolor)
+            with open(txt + '/domhelp.txt', 'r') as domhelp:
+                help = domhelp.read().replace("PREFIX",pre)
+            embed = discord.Embed(description=help, color=embedcolor)
             embed.set_author(name="Dominae Help", icon_url=embedicon)
             embed.set_footer(text=embedtimey)
             await channel.send(embed=embed)
             print ("Dominae Help Shown")
             print (timeydate)
 
-        if message.content.startswith(pre + 'centihelp'):
+        if message.content.startswith('centihelp'): #centihelp
 
-            embed2 = discord.Embed(description="**Centipeetle** — a fork of Dominae by madgeraccoon \n" + 
-                                                     "`Centi Commands` \n \n" +
-                                                     "`" + pre + "fetch`: Grab a simplistic text screenfetch from the host device \n" +
-                                                     "`" + pre + "remfetch`: Grab a simplistic text screenfetch from a remote device \n" +
-                                                     "`" + pre + "pacreb`: Runs `sudo pacman -Syu` to fully update your system and reboot \n" +
-                                                     "`" + pre + "pacman`: Runs `sudo pacman -Syu` to fully update your system \n" +
-                                                     "`" + pre + "reboot`: Reboots your system \n" +
-                                                     "`" + pre + "cbook`: Personal command; uploads ~/Documents/cbook.png to the channel \n" +
-                                                     "`" + pre + "d420`: Rolls the D420 \n" +
-                                                     "`" + pre + "credits`: Displays credits for the bot \n" +
-                                                     "`" + pre + "simon`: Has the bot repeat the containing message with `csimon` removed \n" +
-                                                     "`i love you centipeetle`: Show affection \n" +
-                                                     "`centipeetle, how was your day` or similar: Has the bot print a random response \n" +
-                                                     "`" + pre + "addresp {RESPONSE}`: Add a response to the response pool \n" +
-                                                     "`chaps` in message: Causes a Centipeetle response\n\n" +
-                                                     "Less Than Three", color=embedcolor)
+            with open(txt + '/centihelp.txt', 'r') as centihelp:
+                help = centihelp.read().replace("PREFIX",pre)
+            embed2 = discord.Embed(description=help, color=embedcolor)
             embed2.set_author(name="Centi Help", icon_url=embedicon)
             embed2.set_footer(text=embedtimey)
             await channel.send(embed=embed2)
@@ -347,13 +399,6 @@ async def on_message(message):
                 pre = myfile.read()
             f.close()
             print ("Prefix Changed to: " + "'" + message.content.replace("$prefix ","") + "'")
-            print (timeydate)
-
-        if message.content.startswith(pre + 'help svox'): #Help for svox
-
-            await channel.send("Here are the current VOX keywords.")
-            await channel.send(file=discord.File(img + "/svox.png"))
-            print ("Black Mesa Tech Support notified! (help svox)")
             print (timeydate)
 
  #disabled commands
