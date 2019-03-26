@@ -1,16 +1,16 @@
-**** maddox****@Trashbox
-**** OS****: Antergos 
-**** Kernel****: x86_64 Linux 5.0.2-arch1-1-ARCH
-**** Uptime****: 2d 7h 41m
-**** Packages****: 961
-**** Shell****: bash 5.0.2
-**** Resolution****: 1920x1080
-**** DE****: XFCE4
-**** WM****: Xfwm4
-**** WM Theme****: Numix
-**** GTK Theme****: Numix [GTK2]
-**** Icon Theme****: Numix-Square
-**** Font****: Cantarell 10
-**** CPU****: Intel Core i3-2120 @ 4x 3.3GHz [33.0°C]
-**** GPU****: intel
-**** RAM****: 408MiB / 3838MiB
+************** maddox**************@Trashbox
+************** OS**************: Antergos 
+************** Kernel**************: x86_64 Linux 5.0.3-arch1-1-ARCH
+************** Uptime**************: 2d 19h 2m
+************** Packages**************: 963
+************** Shell**************: bash 5.0.2
+************** Resolution**************: 1920x1080
+************** DE**************: XFCE4
+************** WM**************: Xfwm4
+************** WM Theme**************: Numix
+************** GTK Theme**************: Numix [GTK2]
+************** Icon Theme**************: Numix-Square
+************** Font**************: Cantarell 10
+************** CPU**************: Intel Core i3-2120 @ 4x 3.3GHz [38.0°C]
+************** GPU**************: intel
+************** RAM**************: 383MiB / 3838MiB

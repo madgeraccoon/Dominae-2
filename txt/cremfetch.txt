@@ -1,14 +1,14 @@
 ** maddox**@RaccoonTech
 ** OS**: Antergos 
-** Kernel**: x86_64 Linux 5.0.2-arch1-1-ARCH
-** Uptime**: 4h 46m
-** Packages**: 1312
+** Kernel**: x86_64 Linux 5.0.4-arch1-1-ARCH
+** Uptime**: 7h 5m
+** Packages**: 1338
 ** Shell**: bash 5.0.2
 ** Resolution**: 3840x1080
 ** DE**: KDE 5.56.0 / Plasma 5.15.3
 ** WM**: KWin
 ** GTK Theme**: Numix-Frost-Light [GTK2/3]
 ** Icon Theme**: Numix
-** CPU**: AMD FX-6300 Six-Core @ 6x 3.5GHz [33.7°C]
+** CPU**: AMD FX-6300 Six-Core @ 6x 3.5GHz [34.5°C]
 ** GPU**: GeForce GTX 1050 Ti
-** RAM**: 3499MiB / 16006MiB
+** RAM**: 4516MiB / 16003MiB

@@ -1,1 +1,9 @@
-Kq8YX-zukzc
+[youtube:search] query "<https://www.youtube.com/watch?v=kmmprcld1fu>": Downloading page 1
+[download] Downloading playlist: <https://www.youtube.com/watch?v=kmmprcld1fu>
+[youtube:search] playlist <https://www.youtube.com/watch?v=kmmprcld1fu>: Collected 1 video ids (downloading 1 of them)
+[download] Downloading video 1 of 1
+[youtube] kMmpRcld1FU: Downloading webpage
+[youtube] kMmpRcld1FU: Downloading video info webpage
+[download] /home/maddox/.dominae/out/ytgrab.webm has already been downloaded
+[K[download] 100% of 38.12MiB
+[ffmpeg] Destination: /home/maddox/.dominae/out/ytgrab.mp3
