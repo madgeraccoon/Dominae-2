@@ -1,5 +1,5 @@
 hey! it actually worked!
-# Centipeetle
+![alt text](https://i.imgur.com/SsOsGVB.png)
 Centipeetle is a discord.py bot forked from and heavily based on https://github.com/Evshaddock/Dominae-2 with several additions of varying magnitude, such as a command that rolls a d420, or a complete reorganization of 90% of the code. This is my first real project and I like to think I've learned a lot from it. The prerequisites are the same as the prerequisites for Dominae, with the addition of `fswebcam` in order for `sweb` to work. Anyways, enjoy!
 
 ## Centipeetle exclusives
