@@ -1,4 +1,3 @@
-hey! it actually worked!
 ![alt text](https://i.imgur.com/SsOsGVB.png)
 Centipeetle is a discord.py bot forked from and heavily based on https://github.com/Evshaddock/Dominae-2 with several additions of varying magnitude, such as a command that rolls a d420, or a complete reorganization of 90% of the code. This is my first real project and I like to think I've learned a lot from it. The prerequisites are the same as the prerequisites for Dominae, with the addition of `fswebcam` in order for `sweb` to work. Anyways, enjoy!
 
@@ -7,34 +6,61 @@ Centipeetle is a discord.py bot forked from and heavily based on https://github.
 
 `cfetch`: Grab a simplistic text screenfetch from the host device detailing system information
 
-`cremfetch`: Grab a simplistic text screenfetch from a remote device (needs additional setup in the crem.sh and cremfetch.sh files!!)
+`cyt`: Queries YouTube based on the user's argument and links the first video result.
 
-`cpacreb`: With sudo passwording disabled, runs `sudo pacman -Syu` to fully update your system followed by a reboot, provided you have a role named 'centipeetle wrangler'
+`cytdl`: Queries YouTube based on the user's argument and downloads the first result as an MP3 file, and then uploads the file.
 
-`cpacman`: With sudo passwording disabled, runs `sudo pacman -Syu` to fully update your system, provided you have a role named 'centipeetle wrangler'
+`cpacreb`: Runs `sudo pacman -Syu` to fully update your system followed by a reboot, provided you have a role named 'centipeetle wrangler'**^**
 
-`creboot`: With sudo passwording disabled, reboots your system, provided you have a role named 'centipeetle wrangler'
+`cpacman`: Runs `sudo pacman -Syu` to fully update your system, provided you have a role named 'centipeetle wrangler'**^**
 
-`ccbook`: Personal command; uploads an image placed as ~/Documents/cbook.png to the channel activated from
+`creboot`: Reboots your system, provided you have a role named 'centipeetle wrangler'**^**
 
-`cd420`: Novelty; rolls the D420
+`ccbook`: Personal command; uploads an image placed as ~/Documents/cbook.png to the channel
 
-`ccredits`: Displays credits for the bot
+`cd {VALUE}`: Novelty; rolls a die between 1 and the provided value
+
+`chaps` or `steven` or others in message: Novelty; causes a Centipeetle response
+
+`i love you centipeetle`: Novelty; show affection
 
 `{MESSAGE} csimon {MESSAGE}`: Has the bot repeat the containing message with `csimon` removed, as a simon says-esque command
-
-`i love you centipeetle`: Novelty; shw affection
 
 `centipeetle, how was your day` or any variation containing "centipeetle", "how" and "day": Novelty; has the bot read a random line from `txt/responses.txt` and print it to chat
 
 `caddresp {RESPONSE}`: Novelty; add a response to the previous command's response pool.
 
-`chaps` in message: Novelty; causes a Centipeetle response
+`centi reminders`: Lists the reminders with dates and times in your reminder list
 
-`...` Other novelty commands may appear in the bot's config from time to time, as the bot is largely an experimental project.
+`creaminder {REMINDER}`: Adds a reminder to your reminder list
+
+`cleareminder`: Clears your reminder list
+
+`rcweb`: Takes a picture through a remote webcam**
+
+`rcfull`: Grab a full-display image of a remote device**
+
+`rcwindow`: Grab a display of the currently focused window of a remote device**
+
+`rcfetch`: Grab a simplistic text screenfetch from a remote device**
+
+`ccredits`: Displays credits for the bot
+
+`chelp`: Displays the help disambiguation for the two bot parts
+
+`cdomhelp`: Displays the help command for Dominae
+
+`centihelp`: Displays the help command for Centipeetle
+
+`...` Other novelty or experimental commands may appear in the bot's config from time to time, as the bot is largely an experimental project.
+
+
+**^** - These commands most likely won't be functional on your device if you don't disable password prompting on sudo, as both pacman and reboot rely on sudo power. You also need the 'centipeetle wrangler' role in order to activate these commands.
+
+** - These commands require heavy setup and trial-and-error depending on how experienced you are with setting up SSH, as they rely on SSHing into a specific remote device (IP alterable in the individual script files) and sending back an image. Some of these commands also entail having the Dominae file structure on the remote device in order to properly save files.
 
 ## Disabled commands
-Some commands from Dominae were disabled due to being Dominae-specific remote commands. These commands have no manuals or documentations, so enable and configure them at your own risk! To enable a disabled command, remove it from the triple apostrophe and remove its entry from the list of disabled commands (line ~196 at last revision).
+Some commands from Dominae were disabled due to being Dominae-specific remote commands. These commands have no manuals or documentations, so enable and configure them at your own risk! To enable a disabled command, remove it from the triple apostrophe and remove its entry from the list of disabled commands (line ~346 at last revision).
 
 ## Issues and suggestions
 If you stumble upon this bot and find an issue, feel free to report it to me and I'll try my best to fix or improve the bot!
