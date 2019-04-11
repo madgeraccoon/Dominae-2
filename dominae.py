@@ -180,16 +180,20 @@ async def on_message(message):
                 print ("Reboot attempted???")
                 print (timeydate)
 
-        if message.content.startswith(pre + 'cons'):
-            target = message.content.replace(pre + 'cons','')
-            role_names = [role.name for role in author.roles]
-            if message.author.id == 150009845464956928 or message.author.id == 540513489568137216:   
-                subprocess.check_output(target + " > ~/.dominae/txt/cons.txt",shell=True)
-                with open(txt + "/cons.txt",'r') as cons:
-                    term = cons.read()
-                await channel.send(term)
-                print("Terminal command?")
-                print(timeydate)
+### CCONS IS EXTREMELY DANGEROUS (IT LETS CHAT USERS RUN CONSOLE COMMANDS)
+### IF YOU DON'T CARE AND YOU WANT THE WORLD TO BURN (OR YOU'RE CAREFUL)
+### THEN UNCOMMENT THIS SECTION AND APPROPRIATELY REPLACE THE ALLOWED USER IDS
+### GODSPEED
+#        if message.content.startswith(pre + 'cons'):
+#            target = message.content.replace(pre + 'cons','')
+#            role_names = [role.name for role in author.roles]
+#            if message.author.id == 150009845464956928 or message.author.id == 540513489568137216:   
+#                subprocess.check_output(target + " > ~/.dominae/txt/cons.txt",shell=True)
+#                with open(txt + "/cons.txt",'r') as cons:
+#                    term = cons.read()
+#                await channel.send(term)
+#                print("Terminal command?")
+#                print(timeydate)
 
         if message.content.startswith(pre + 'cbook'): # ccbook
 
