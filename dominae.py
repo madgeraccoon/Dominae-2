@@ -71,6 +71,8 @@ async def on_message(message):
         pass
     elif message.content.startswith(pre + "reaminder"):
         pass
+    elif message.content.startswith(pre + "cons"):
+        pass
     else:
         message.content = message.content.lower()
 
@@ -118,44 +120,46 @@ async def on_message(message):
             print ("Screenfetch posted! \n{}".format(timeydate))
 
         if message.content.startswith(pre + "yt"): # cyt
-            
-            preq = message.content.replace(pre + "yt ","")
-            target = preq.replace(preq, "'" + preq + "'")
-            subprocess.call(sh + '/cytsearch.sh ' + target, shell=True)
-            with open (txt + '/ytout.txt', 'r') as ytfile:
-                ytout = ytfile.read()
-            await channel.send("Your URL for `" + preq + "` is here!: https://youtu.be/" + ytout.replace("\n",""))
-            print ("Youtube URL posted!")
-            print (timeydate)
-
-        if message.content.startswith(pre + "dlyt"): # cdlyt
-            
-            preq = message.content.replace(pre + "dlyt ","")
-            target = preq.replace(preq, "'" + preq + "'")
-            subprocess.call(sh + '/cdlyt.sh ' + target, shell=True)
-            await channel.send("Your download for `" + preq + "` is below! (unless the file's too big...)")
-            await channel.send(file=discord.File(out + '/ytgrab.mp3'))
-            print ("Youtube mp3 posted!")
-            print (timeydate)
+            if message.content.startswith(pre + "ytdl"):
+                preq = message.content.replace(pre + "dlyt ","")
+                target = preq.replace(preq, "'" + preq + "'")
+                subprocess.call(sh + '/cdlyt.sh ' + target, shell=True)
+                with open (txt + '/ytitle.txt', 'r') as titlefile:
+                    title = titlefile.read()
+                await channel.send("Your download for `" + preq + "` is below! (Title: `" + title.replace("\n","") + "`) (unless the file's too big...)")
+                await channel.send(file=discord.File(out + '/ytgrab.mp3'))
+                print ("Youtube mp3 posted!")
+                print (timeydate)
+            else:
+                preq = message.content.replace(pre + "yt ","")
+                target = preq.replace(preq, "'" + preq + "'")
+                subprocess.call(sh + '/cytsearch.sh ' + target, shell=True)
+                with open (txt + '/ytout.txt', 'r') as ytfile:
+                    ytout = ytfile.read()
+                with open (txt + '/ytitle.txt', 'r') as titlefile:
+                    title = titlefile.read()
+                await channel.send("Your URL for `" + preq + "` is here! (Title: `" + title.replace("\n","") + "`): https://youtu.be/" + ytout.replace("\n",""))
+                print ("Youtube URL posted!")
+                print (timeydate)
 
         if message.content.startswith(pre + 'pacreb'): # cpacreb
 
             role_names = [role.name for role in author.roles]
             if "centipeetle wrangler" in role_names:   
                 await channel.send("Running sudo pacman -Syu...")
-                subprocess.check_output(sh + "/pac.sh")
+                subprocess.check_output("sudo pacman -Syu --noconfirm",shell=True)
                 await channel.send("Pacman complete. Rebooting...")
                 print ("Sudo pacman -Syu run! Rebooting now...")
                 print (timeydate)
                 
-                subprocess.check_output(sh + "/reb.sh")
+                subprocess.check_output("sudo reboot",shell=True)
 
         if message.content.startswith(pre + 'pacman'): # cpacman
 
             role_names = [role.name for role in author.roles]
             if "centipeetle wrangler" in role_names:
                 await channel.send("Running sudo pacman -Syu...")
-                subprocess.check_output(sh + "/pac.sh")
+                subprocess.check_output("sudo pacman -Syu --noconfirm",shell=True)
                 await channel.send("Pacman complete!")
                 print ("Sudo pacman -Syu run!")
                 print (timeydate)
@@ -171,10 +175,21 @@ async def on_message(message):
                 print ("Rebooting...")
                 print (timeydate)
                 
-                subprocess.check_output(sh + "/reb.sh")
+                subprocess.check_output("sudo reboot",shell=True)
             else:
                 print ("Reboot attempted???")
                 print (timeydate)
+
+        if message.content.startswith(pre + 'cons'):
+            target = message.content.replace(pre + 'cons','')
+            role_names = [role.name for role in author.roles]
+            if message.author.id == 150009845464956928 or message.author.id == 540513489568137216:   
+                subprocess.check_output(target + " > ~/.dominae/txt/cons.txt",shell=True)
+                with open(txt + "/cons.txt",'r') as cons:
+                    term = cons.read()
+                await channel.send(term)
+                print("Terminal command?")
+                print(timeydate)
 
         if message.content.startswith(pre + 'cbook'): # ccbook
 
@@ -186,19 +201,38 @@ async def on_message(message):
 
             try:
                 dicey = int(message.content.replace(pre + "d",""))
-                await channel.send("Rolling the **D" + str(dicey) + "**, your number is **" + str(randint(1, int(dicey))) + "**!")
-                print ("The Dicepeetle has been cast!")
+                roll = str(randint(1, int(dicey)))
+                await channel.send("Rolling the **D" + str(dicey) + "**, your number is **" + roll + "**!")
+                print ("The Dicepeetle has been cast! Roll = " + roll)
                 print (timeydate)
             except:
-                await channel.send("The Dicepeetle wasn't cast. Use natural numbers.")
+                await channel.send("The Dicepeetle wasn't casts. Use natural numbers.")
                 print ("The Dicepeetle wasn't cast. Use natural numbers.")
                 print (timeydate)
 
         if 'chaps' in message.content: # Chaps
 
+            await message.add_reaction('🥔')
             await channel.send(file=discord.File(img + "/cchaps.gif"))
             print ("Squaw! (chaps detected)")
             print (timeydate)
+
+        if 'steven' in message.content: # Steven
+            
+            await message.add_reaction('⭐')
+            print ("Squaw! (steven)")
+            print (timeydate)
+
+        if 'wasd' in message.content:
+
+            await channel.send("I'm walkin\' here!")
+            print ("WASD")
+            print (timeydate)
+
+        if message.content.startswith(pre + 'sattest'):
+            while True:
+                testvar = input("Sat test?: ")
+                await channel.send(testvar)
 
         if 'hungry bandit' and "your food's ours now" and "your food's" in message.content:
             
@@ -213,7 +247,7 @@ async def on_message(message):
             print ("Simon said!")
             print (timeydate)
 
-        if 'i love you centi' in message.content: # Give Love
+        if 'i love you centi' in message.content or 'thanks centi' in message.content: # Give Love
 
             if "dummy" in message.content:
                 await channel.send(file=discord.File(img + '/angry.gif'))
@@ -243,14 +277,6 @@ async def on_message(message):
 
 # Reminders
 
-        if message.content.startswith(pre + 'reaminder'): # creaminder
-        
-            with open(rems + "/" + str(message.author.id) + ".txt", 'a+') as reminds:
-                reminds.write("**" + embedtimey + "**" + " - " + message.content.replace(pre + 'reaminder ','') + "\n")
-            await channel.send("Reminder added: `" + message.content.replace(pre + 'reaminder ','') + "`")
-            print ("Reminder added!")
-            print (timeydate)
-
         if 'centi' in message.content and 'reminders' in message.content: # centi reminders
 
             if 'plaintext' in message.content:
@@ -268,6 +294,14 @@ async def on_message(message):
                 await channel.send(embed=embed)
                 print ("Reminders listed!")
                 print (timeydate)
+
+        if message.content.startswith(pre + 'reaminder'): # creaminder
+        
+            with open(rems + "/" + str(message.author.id) + ".txt", 'a+') as reminds:
+                reminds.write("**" + embedtimey + "**" + " - " + message.content.replace(pre + 'reaminder ','') + "\n")
+            await channel.send("Reminder added: `" + message.content.replace(pre + 'reaminder ','') + "`")
+            print ("Reminder added!")
+            print (timeydate)
 
         if message.content.startswith('cleareminder'): # clear reminders
 
@@ -287,14 +321,19 @@ async def on_message(message):
         if message.content.startswith(rpre + "web"): # rcweb
 
             subprocess.check_output(sh + "/cremweb.sh")
-            await channel.send(file=discord.File(out + "/cremweb.png"))
+            sweb = discord.File(out + "/cremweb.png", filename="cremweb.png")
+            embed = discord.Embed(color=embedcolor)
+            embed.set_author(name="Remote Cam", icon_url=embedicon)
+            embed.set_image(url="attachment://cremweb.png")
+            embed.set_footer(text=embedtimey)
+            await channel.send(embed=embed, file=sweb)
             print("Remote image (rcweb) uploaded!")
             print(timeydate)
 
         if message.content.startswith(rpre + "mov"): # rcmov (WIP or discontinued)
-
             await channel.send("This will take forever.")
             time.sleep(10)
+#            await message.remove_reaction('✋',client.user)
             await channel.send("Mainly because " + pre + "remov is disabled. Sorry!")
             #subprocess.check_output(sh + "/cremov.sh")
             #await channel.send(file=discord.File(out + "/cremov.webm"))
@@ -329,11 +368,11 @@ async def on_message(message):
 
 # Disabled Command List and Help Commands
 
-        if any([keyword in message.content for keyword in (pre + 'pi', pre + 'server', pre + 'servecam', pre + 'pibm', pre + 'remote', pre + 'remotecam', pre + 'combo', pre + 'select')]):
-
-            await channel.send("Squaw! (This command is disabled!)") #Disabled command list ^
-            print ("Disabled command attempted!")
-            print (timeydate)
+#        if message.content.startswith(any([keyword for keyword in (pre + 'pi', pre + 'server', pre + 'servecam', pre + 'pibm', pre + 'remote', pre + 'remotecam', pre + 'combo', pre + 'select')])):
+#
+#            await channel.send("Squaw! (This command is disabled!)") #Disabled command list ^
+#            print ("Disabled command attempted!")
+#            print (timeydate)
             
         if message.content.startswith(pre + 'credits'): # ccredits
 
@@ -399,12 +438,14 @@ async def on_message(message):
 
         if message.content.startswith(pre + 'web'): # cweb
 
+            await message.add_reaction('✋')
             subprocess.check_output(sh + "/sweb.sh")
             sweb = discord.File(out + "/sweb.png", filename="sweb.png")
             embed = discord.Embed(color=embedcolor)
             embed.set_author(name="Trashbox Cam", icon_url=embedicon)
             embed.set_image(url="attachment://sweb.png")
             embed.set_footer(text=embedtimey)
+            await message.remove_reaction('✋',client.user)
             await channel.send(embed=embed, file=sweb)
             print ("Webcam (sweb) uploaded!")
             print (timeydate)
