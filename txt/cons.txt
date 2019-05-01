@@ -1,1 +1,1 @@
-beans
+ 11:22:13 up 4 days,  3:23,  5 users,  load average: 0.17, 0.13, 0.10

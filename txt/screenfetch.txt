@@ -1,1 +1,13 @@
-/dev/null
+** maddox**@Trashbox
+** OS**: Antergos 
+** Kernel**: x86_64 Linux 5.0.9-arch1-1-ARCH
+** Uptime**: 3d 14h 18m
+** Packages**: 975
+** Shell**: bash 5.0.3
+** WM**: 
+** GTK Theme**: Numix-Frost-Light [GTK2/3]
+** Icon Theme**: Numix
+** Font**: Lato 11
+** CPU**: Intel Core i3-2120 @ 4x 3.3GHz [37.0°C]
+** GPU**: intel
+** RAM**: 213MiB / 3838MiB

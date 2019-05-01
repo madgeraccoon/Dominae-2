@@ -1,6 +1,6 @@
 #Screengrabbot by Ewi OwO
 # code revisions by Maddie oo-woo
-
+# Ray William Johnson
 ### Prerequisites and Setup
 
 from discord.ext.commands import Bot
@@ -14,9 +14,10 @@ import discord
 import asyncio
 import random
 import time
+import sys
 import os
 
-client = commands.Bot(command_prefix='>')
+client = commands.Bot(command_prefix='>>')
 
 cwd = str(Path.home()) + "/.dominae"
 img = cwd + "/img"
@@ -52,17 +53,20 @@ async def on_message(message):
 # Date and Time Variables
 
     now = datetime.now() # Get time of command
-    justtimey = 'at {} \n'.format(now.strftime("%I:%M%p on %A, %B %d, %Y")) # "at 06:00AM on Tuesday, January 1, 2019"
-    embedtimey = '{}'.format(now.strftime("%a at %I:%M%p")) # "Tue at 06:00AM"
-    timeydate = 'by {} at {} \n'.format(author, now.strftime("%I:%M:%S%p on %A, %B %d, %Y")) # "by madgeraccoon#1983 at 06:00:00AM on Tuesday, January 1, 2019"
+    justtimey = 'at {} \n'.format(now.strftime("%I:%M%p on %A, %B %d, %Y")) # "at 06:00AM on Wednesday, January 2, 2019"
+    embedtimey = '{}'.format(now.strftime("%a at %I:%M%p")) # "Wed at 06:00AM"
+    timeydate = 'by {} at {} \n'.format(author, now.strftime("%I:%M:%S%p on %A, %B %d, %Y")) # "by madgeraccoon#1983 at 06:00:00AM on Wednesday, January 2, 2019"
 
     prefile = open(txt + '/pre.txt','r') 
     pre = prefile.read().strip()
     rpre = "r" + pre
+    adm = "$"
 
     tfile = open(txt + '/toggle.txt','r') 
     toggle = tfile.read()
 
+    role_names = [role.name for role in author.roles]
+    
 # Special Case and Space Rules
 
     if message.content.startswith(pre + "say"):
@@ -78,7 +82,7 @@ async def on_message(message):
 
 # Bot Toggles
     
-    if message.content.startswith('$off'): # Off
+    if message.content.startswith(adm + 'off'): # Off
         p = open(txt + '/toggle.txt','w')
         p.write("True")
         p.close
@@ -91,7 +95,7 @@ async def on_message(message):
         print ("Centi enabled: " + toggle)
         print (timeydate)
 
-    if message.content.startswith('$on'): # On
+    if message.content.startswith(adm + 'on'): # On
         n = open(txt + '/toggle.txt','w')
         n.write("False")
         n.close
@@ -142,10 +146,9 @@ async def on_message(message):
                 print ("Youtube URL posted!")
                 print (timeydate)
 
-        if message.content.startswith(pre + 'pacreb'): # cpacreb
+        if message.content.startswith(adm + 'pacreb'): # cpacreb
 
-            role_names = [role.name for role in author.roles]
-            if "centipeetle wrangler" in role_names:   
+            if 'centipeetle wrangler' in role_names:   
                 await channel.send("Running sudo pacman -Syu...")
                 subprocess.check_output("sudo pacman -Syu --noconfirm",shell=True)
                 await channel.send("Pacman complete. Rebooting...")
@@ -154,10 +157,9 @@ async def on_message(message):
                 
                 subprocess.check_output("sudo reboot",shell=True)
 
-        if message.content.startswith(pre + 'pacman'): # cpacman
+        if message.content.startswith(adm + 'pacman'): # cpacman
 
-            role_names = [role.name for role in author.roles]
-            if "centipeetle wrangler" in role_names:
+            if 'centipeetle wrangler' in role_names:
                 await channel.send("Running sudo pacman -Syu...")
                 subprocess.check_output("sudo pacman -Syu --noconfirm",shell=True)
                 await channel.send("Pacman complete!")
@@ -167,10 +169,9 @@ async def on_message(message):
                 print ("Sudo pacman -Syu attempted???")
                 print (timeydate)
 
-        if message.content.startswith(pre + 'reboot'): # creboot
+        if message.content.startswith(adm + 'reboot'): # creboot
 
-            role_names = [role.name for role in author.roles]
-            if "centipeetle wrangler" in role_names:
+            if 'centipeetle wrangler' in role_names:
                 await channel.send("Rebooting...")
                 print ("Rebooting...")
                 print (timeydate)
@@ -180,25 +181,31 @@ async def on_message(message):
                 print ("Reboot attempted???")
                 print (timeydate)
 
-### CCONS IS EXTREMELY DANGEROUS (IT LETS CHAT USERS RUN CONSOLE COMMANDS)
-### IF YOU DON'T CARE AND YOU WANT THE WORLD TO BURN (OR YOU'RE CAREFUL)
-### THEN UNCOMMENT THIS SECTION AND APPROPRIATELY REPLACE THE ALLOWED USER IDS
-### GODSPEED
-#        if message.content.startswith(pre + 'cons'):
-#            target = message.content.replace(pre + 'cons','')
-#            role_names = [role.name for role in author.roles]
-#            if message.author.id == 150009845464956928 or message.author.id == 540513489568137216:   
-#                subprocess.check_output(target + " > ~/.dominae/txt/cons.txt",shell=True)
-#                with open(txt + "/cons.txt",'r') as cons:
-#                    term = cons.read()
-#                await channel.send(term)
-#                print("Terminal command?")
-#                print(timeydate)
+        if message.content.startswith(adm + 'cons'):
+            target = message.content.replace(adm + 'cons','')
+            if 'centipeetle wrangler' in role_names:
+                subprocess.check_output(target + " > ~/.dominae/txt/cons.txt",shell=True)
+                with open(txt + "/cons.txt",'r') as cons:
+                    term = cons.read()
+                await channel.send(term)
+                print("Terminal command?")
+                print(timeydate)
+
+        if message.content.startswith(adm + 'restart'):
+            if 'centipeetle wrangler' in role_names:
+                await channel.send("Restarting Centi...")
+                print("Restarting...")
+                os.execl(sys.executable, sys.executable, *sys.argv)
 
         if message.content.startswith(pre + 'cbook'): # ccbook
 
-            await channel.send(file=discord.File(img + "/cbook.png"))
-            print ("Special image uploaded!")
+            cb = discord.File(img + "/cbook.png", filename="cbook.png")
+            embed = discord.Embed(color=embedcolor)
+            embed.set_author(name="Custom Image", icon_url=embedicon)
+            embed.set_image(url='attachment://cbook.png')
+            embed.set_footer(text=embedtimey)
+            await channel.send(embed=embed, file=cb)
+            print ("chromed book")
             print (timeydate)
 
         if message.content.startswith(pre + 'd'): # cd (Dice)
@@ -210,7 +217,7 @@ async def on_message(message):
                 print ("The Dicepeetle has been cast! Roll = " + roll)
                 print (timeydate)
             except:
-                await channel.send("The Dicepeetle wasn't casts. Use natural numbers.")
+                await channel.send("The Dicepeetle wasn't cast. Use natural numbers.")
                 print ("The Dicepeetle wasn't cast. Use natural numbers.")
                 print (timeydate)
 
@@ -233,15 +240,10 @@ async def on_message(message):
             print ("WASD")
             print (timeydate)
 
-        if message.content.startswith(pre + 'sattest'):
-            while True:
-                testvar = input("Sat test?: ")
-                await channel.send(testvar)
-
-        if 'hungry bandit' and "your food's ours now" and "your food's" in message.content:
+        if 'hi centi' in message.content:
             
-            await channel.send(file=discord.File(img + '/angry.gif'))
-            print ("Hungry bandit.")
+            await channel.send("hi!!!")
+            print ("hello!!!")
             print (timeydate)
 
         if 'csimon' in message.content: # csimon
@@ -259,6 +261,11 @@ async def on_message(message):
                 await channel.send(file=discord.File(img + '/lovepeetle.gif'))
                 print ("Love given!")
                 print (timeydate)
+
+        if 'cute connie bot' in message.content:
+            await channel.send(file=discord.File(img + '/howareyou.png'))
+            print ("CUTE CONNIE BOT")
+            print (timeydate)
  
 # Responses
 
@@ -464,9 +471,8 @@ async def on_message(message):
 
         if message.content.startswith(pre + 'say'): # csay
 
-            with open(txt + '/ssay.txt','w') as f:
-                f.write(message.content.replace(pre + "say ",""))
-            subprocess.check_output(sh + "/ssay.sh")
+            target = message.content.replace(pre + 'say','')
+            subprocess.check_output(sh + "/ssay.sh " + target, shell=True)
             await channel.send(file=discord.File(out + '/ssay.png'))
             print ("Phrase (ssay) uploaded!")
             print ("'" + message.content.replace(pre + "say ","") + "'")
@@ -487,15 +493,15 @@ async def on_message(message):
             print ("Message: ""'" + message.content.replace(pre + "vox ","") + "'")
             print (timeydate)
 
-        if message.content.startswith('$prefix'): # change bot prefix
-
-            with open(txt + '/pre.txt','w') as f:
-                with open(txt + '/pre.txt','r') as myfile:
-                    pre = myfile.read()
-                f.write(message.content.replace("$prefix ",""))
-            await channel.send("Prefix has been changed to " + "`" + message.content.replace("$prefix ","") + "`.")
-            print ("Prefix Changed to: " + "'" + message.content.replace("$prefix ","") + "'")
-            print (timeydate)
+        if message.content.startswith(adm + 'prefix'): # change bot prefix
+            if 'centipeetle wrangler' in role_names:
+                with open(txt + '/pre.txt','w') as f:
+                    with open(txt + '/pre.txt','r') as myfile:
+                        pre = myfile.read()
+                    f.write(message.content.replace("$prefix ",""))
+                await channel.send("Prefix has been changed to " + "`" + message.content.replace("$prefix ","") + "`.")
+                print ("Prefix Changed to: " + "'" + message.content.replace("$prefix ","") + "'")
+                print (timeydate)
 
  # Disabled Commands
 
