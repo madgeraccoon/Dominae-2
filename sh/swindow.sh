@@ -1,2 +1,2 @@
 #!/bin/bash
-scrot -u $HOME/.dominae/out/swindow.png -d 3
+DISPLAY=:0 scrot -o -u $HOME/.dominae/out/swindow.png
