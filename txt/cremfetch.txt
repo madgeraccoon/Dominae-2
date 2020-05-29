@@ -1,8 +1,0 @@
-** maddox**@RaccoonTech
-** OS**: Antergos 
-** Kernel**: x86_64 Linux 5.1.9-arch1-1-ARCH
-** Resolution**: 3840x1080
-** DE**: KDE 5.59.0 / Plasma 5.16.0
-** CPU**: AMD FX-6300 Six-Core @ 6x 3.5GHz
-** GPU**: GeForce GTX 1050 Ti
-** RAM**: 16GB / 16384MiB

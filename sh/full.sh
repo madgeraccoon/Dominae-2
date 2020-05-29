@@ -1,2 +1,2 @@
 #!/bin/bash
-DISPLAY=:0 scrot -o $HOME/.dominae/out/sfull.png
+DISPLAY=:0 scrot -o $HOME/.centipeetle/out/sfull.png

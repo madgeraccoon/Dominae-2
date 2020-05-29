@@ -1,0 +1,9 @@
+ `cd`^`crate`^`cfetch`^`cchoose`^`cvideo`^`calarm`
+ `centi, how is your day`^`caddresp`^`wasd`^`hi/hello centi`^`chaps/chips`^`steven`^`thanks centi`
+ `cweb`^`cfull`^`cwindow`^`csay`^`cmov`^`cgive`^`cvox`
+ `cyt`^`cyts`^`cytplay`^`cytdl`
+ `cplay`^`chellgnome`^`cnoise`^`cquery`^`cvoxplay`
+ `creminder` for more info
+ `ccredits`^`chelp`
+ `$cons`^`$pacman`^`$reboot`^`$pacreb`
+ `$on`^`$off`^`$restart`^`$prefix`^`$file`^`$$`

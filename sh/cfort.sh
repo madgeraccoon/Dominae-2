@@ -1,0 +1,2 @@
+#!/bin/bash
+convert -size 2000x2000 -channel RGBA -background none -trim -bordercolor none -border 3 -fill '#ffffff' -font Burbank-Big-Condensed-Black -pointsize 120 caption:"$@" $HOME/.centipeetle/out/cfort.png

@@ -1,0 +1,18 @@
+{
+    "admins": [
+        "admin IDs go in list form here",
+        "like so"
+    ],
+    "prefix": "c",
+    "prefix_admin": "$",
+    "randstatus": "off",
+    "redd_id": "{reddit id; reddit commands won't work without this!}",
+    "redd_secret": "{reddit secret key; reddit commands won't work without this!}",
+    "status": "Hello, Gordon!",
+    "toggle": "ON",
+    "token": "{discord token here!}",
+    "version": "1.3",
+    "weather_rightalign": "ON",
+    "currconv_key": "{cconv won't work without this!}",
+    "wttr_key": "{cweather won't work without this; use cwttr if unable!}"
+}

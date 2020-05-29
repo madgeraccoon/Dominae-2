@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Installer script for Dominae.
+# Installer script for Centipeetle. (Thanks Robin)
 
 if grep ID /etc/os-release | grep -qE "fedora"; then
     echo "Fedora detected! Installing prerequisites..."
@@ -18,7 +18,7 @@ if grep ID /etc/os-release | grep -qE "fedora"; then
     sudo python3.5 -m pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip
     sudo python3.5 -m pip install -U aiohttp
     sudo python3.5 -m pip install -U websockets
-    sudo cp $HOME/.dominae/sh/dominae /usr/bin
+    sudo cp $HOME/.centipeetle/sh/centipeetle /usr/bin
     echo "Done."
     echo "Make sure you set your bot token by using [dominae -t <token>] before running!"
     
@@ -41,7 +41,7 @@ elif grep ID /etc/os-release | grep -qE 'debian|ubuntu'; then
     sudo python3.5 -m pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip
     sudo python3.5 -m pip install -U aiohttp
     sudo python3.5 -m pip install -U websockets
-    sudo cp $HOME/.dominae/sh/dominae /usr/bin
+    sudo cp $HOME/.centipeetle/sh/centipeetle /usr/bin
     echo "Done."
     echo "Make sure you set your bot token by using [dominae -t <token>] before running!"
     
@@ -59,10 +59,10 @@ elif grep ID /etc/os-release | grep -q 'arch\|manjaro'; then
     sudo python3.5 -m pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip
     sudo python3.5 -m pip install -U aiohttp
     sudo python3.5 -m pip install -U websockets
-    sudo cp $HOME/.dominae/sh/dominae /usr/bin
+    sudo cp $HOME/.centipeetle/sh/centipeetle /usr/bin
     echo "Done."
     echo "Make sure you set your bot token by using [dominae -t <token>] before running!"
     
 else
-	echo "Sorry, I haven't added support for your OS's package manager yet. You can find the list of prerequisites on my github and install them manually, then copy ~/.dominae/sh/dominae to your /usr/bin"
+	echo "Sorry, I haven't added support for your OS's package manager yet. You can find the list of prerequisites on my github and install them manually, then copy ~/.centipeetle/sh/dominae to your /usr/bin"
 fi

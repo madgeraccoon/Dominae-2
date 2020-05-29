@@ -1,0 +1,13 @@
+ #! /bin/sh
+ 
+ # Startup script for Centi. (Thanks Robin)
+ 
+ if [[ $1 = "-l" ]]; then
+    python3.5 $HOME/.centipeetle/centi.py >> $HOME/.centipeetle/txt/log.txt
+    echo "Logging bot activity to file..."
+elif [[ $1 = "-h"  ]]; then
+    echo " -l to output log to ~/.centipeetle/txt/log.txt "
+    echo " -h to display help "
+else
+    python3.5 $HOME/.centipeetle/centi.py
+fi
