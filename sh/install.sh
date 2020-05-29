@@ -14,13 +14,8 @@ if grep ID /etc/os-release | grep -qE "fedora"; then
 		libffi \
 		sox \
 		python35 
-    echo "Installing python packages..."
-    sudo python3.5 -m pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip
-    sudo python3.5 -m pip install -U aiohttp
-    sudo python3.5 -m pip install -U websockets
     sudo cp $HOME/.centipeetle/sh/centipeetle /usr/bin
-    echo "Done."
-    echo "Make sure you set your bot token by using [dominae -t <token>] before running!"
+    echo "Done. Don't forget to set up txt/centi.json with your token and API keys!"
     
 elif grep ID /etc/os-release | grep -qE 'debian|ubuntu'; then
 	DEBIAN_FRONTEND=noninteractive
@@ -37,13 +32,8 @@ elif grep ID /etc/os-release | grep -qE 'debian|ubuntu'; then
 		libffi \
 		sox \
 		python3.5 
-    echo "Installing python packages..."
-    sudo python3.5 -m pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip
-    sudo python3.5 -m pip install -U aiohttp
-    sudo python3.5 -m pip install -U websockets
     sudo cp $HOME/.centipeetle/sh/centipeetle /usr/bin
-    echo "Done."
-    echo "Make sure you set your bot token by using [dominae -t <token>] before running!"
+    echo "Done. Don't forget to set up txt/centi.json with your token and API keys!"
     
 elif grep ID /etc/os-release | grep -q 'arch\|manjaro'; then
     echo "Arch / Manjaro detected. Installing prerequisites..."
@@ -55,14 +45,9 @@ elif grep ID /etc/os-release | grep -q 'arch\|manjaro'; then
 		libffi \
 		sox \
 		python35 
-    echo "Installing python packages..."
-    sudo python3.5 -m pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip
-    sudo python3.5 -m pip install -U aiohttp
-    sudo python3.5 -m pip install -U websockets
     sudo cp $HOME/.centipeetle/sh/centipeetle /usr/bin
-    echo "Done."
-    echo "Make sure you set your bot token by using [dominae -t <token>] before running!"
+    echo "Done. Don't forget to set up txt/centi.json with your token and API keys!"
     
 else
-	echo "Sorry, I haven't added support for your OS's package manager yet. You can find the list of prerequisites on my github and install them manually, then copy ~/.centipeetle/sh/dominae to your /usr/bin"
+	echo "Sorry, I haven't added support for your OS's package manager yet. You can find the list of prerequisites at the bottom of the repo and install them manually, then copy ~/.centipeetle/sh/centipeetle to your /usr/bin"
 fi
