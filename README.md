@@ -38,7 +38,7 @@ The default prefixes are `c` for user commands and `$` for admin commands, but b
 - `cflag` - Generates flag designs with specified hex codes, or "random" in the place of a hex code
 - `credd`, `cfood` and `cplate` - Posts a random submission from a specified subreddit OR based on the command. `credd {SUBREDDIT}` for specified subreddits, `cfood` for /r/shittyfoodporn, and `cplate` for /r/wewantplates
 - `csay` - Generates a large text image of the specified message in the Crewniverse font. Alternatives include `cfam`, `cfort`, `chalo`, and `ccraft`
-- `cvox "{MESSAGE}" {VOICE CHOICE}` - Generates a text-to-speech audio version of the specified message using one of several voices from acapela-group; a full list of voices are in the wiki
+- `cvox "{MESSAGE}" {VOICE CHOICE}` - Generates a text-to-speech audio version of the specified message using one of several voices from acapela-group; a full list of voices are in the wiki ([Standalone terminal version of acapyla here](https://github.com/maddoxdragon/acapyla))
 - `cplay {SOUND NAME}` - Plays a sound file from a pre-existing list of sound files in `audio/sound/` in the user's current voice chat. A full list of sounds are in the wiki
 
 ##### Reminders
@@ -68,7 +68,7 @@ The default prefixes are `c` for user commands and `$` for admin commands, but b
 
 #### Installation
 
-1. Clone the repo to your home directory (~/.centipeetle/)
+1. Clone the repo to your home directory (e.g. `~/.centipeetle/centi.py`)
 
 2. Install the Python module requirements with `pip install -r ~/.centipeetle/txt/requirements.txt` (make sure to use the pip that corresponds to your Python installation, for example `pip3.5` for `python3.5`)
 
