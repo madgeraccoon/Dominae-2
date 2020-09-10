@@ -6,7 +6,7 @@
 
 ## Introduction
 
-Centipeetle is a discord.py bot with over 60 commands of varied purpose and utility, such as weather reportsdice rolling, timers with messages, editable reminder lists, novelty chat commands, media commands and more!
+Centipeetle is a discord.py bot with over 60 commands of varied purpose and utility, such as weather reports, dice rolling, timers with messages, editable reminder lists, novelty chat commands, media commands and more!
 
 ## Centipeetle command examples
 
